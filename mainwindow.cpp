@@ -65,3 +65,36 @@ void MainWindow::on_actionSave_triggered()
     file.close();
 }
 
+void MainWindow::on_actionRedFont_triggered()
+{
+    QTextEdit* textEdit = ui->textEdit;
+    textEdit->setTextColor(QColor("red"));
+}
+
+
+void MainWindow::on_actionWhiteFont_triggered()
+{
+    QTextEdit* textEdit = ui->textEdit;
+    textEdit->setTextColor(QColor("white"));
+}
+
+
+void MainWindow::on_actionBlackFont_triggered()
+{
+    QTextEdit* textEdit = ui->textEdit;
+    textEdit->setTextColor(QColor("black"));
+}
+
+
+void MainWindow::on_actionYellowFont_triggered()
+{
+    QTextEdit* textEdit = ui->textEdit;
+    textEdit->setTextColor(QColor("yellow"));
+}
+
+
+void MainWindow::on_actionGreenFont_triggered()
+{
+    QTextEdit* textEdit = ui->textEdit;
+    textEdit->setTextColor(QColor("green"));
+}

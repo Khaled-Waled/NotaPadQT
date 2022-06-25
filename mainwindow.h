@@ -27,6 +27,22 @@ private slots:
 
     void on_actionSave_triggered();
 
+//    void on_pushButton_clicked();
+
+//    void on_redButton_clicked();
+
+//    void on_whiteButton_clicked();
+
+    void on_actionRedFont_triggered();
+
+    void on_actionWhiteFont_triggered();
+
+    void on_actionBlackFont_triggered();
+
+    void on_actionYellowFont_triggered();
+
+    void on_actionGreenFont_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
