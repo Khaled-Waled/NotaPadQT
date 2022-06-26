@@ -60,6 +60,7 @@
      <addaction name="actionBlackFont"/>
      <addaction name="actionYellowFont"/>
      <addaction name="actionGreenFont"/>
+     <addaction name="actionBlueFont"/>
     </widget>
     <addaction name="menuChange_color"/>
    </widget>
@@ -104,6 +105,11 @@
   <action name="actionGreenFont">
    <property name="text">
     <string>Green</string>
+   </property>
+  </action>
+  <action name="actionBlueFont">
+   <property name="text">
+    <string>Blue</string>
    </property>
   </action>
  </widget>

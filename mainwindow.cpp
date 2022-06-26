@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+#include <QTimer>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -8,10 +10,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     //make the text editor take full screen
     this->setCentralWidget(ui->textEdit);
+    this->wordProcessor = WordProcessor();
+    this->wordProcessor.setWorkingElement(ui->textEdit);
+    timerId = startTimer(1000);
 }
 
 MainWindow::~MainWindow()
 {
+    killTimer(timerId);
     delete ui;
 }
 
@@ -98,3 +104,15 @@ void MainWindow::on_actionGreenFont_triggered()
     QTextEdit* textEdit = ui->textEdit;
     textEdit->setTextColor(QColor("green"));
 }
+
+void MainWindow::on_actionBlueFont_triggered()
+{
+    QTextEdit* textEdit = ui->textEdit;
+    textEdit->setTextColor(QColor("blue"));
+}
+
+void MainWindow::timerEvent(QTimerEvent *event)
+{
+    wordProcessor.colorFormatText();
+}
+

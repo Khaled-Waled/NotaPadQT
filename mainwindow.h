@@ -8,6 +8,7 @@
 #include<QTextStream>
 #include<QMessageBox>
 
+#include<wordprocessor.h>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -27,12 +28,6 @@ private slots:
 
     void on_actionSave_triggered();
 
-//    void on_pushButton_clicked();
-
-//    void on_redButton_clicked();
-
-//    void on_whiteButton_clicked();
-
     void on_actionRedFont_triggered();
 
     void on_actionWhiteFont_triggered();
@@ -43,8 +38,15 @@ private slots:
 
     void on_actionGreenFont_triggered();
 
+    void on_actionBlueFont_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
+    WordProcessor wordProcessor;
+    int timerId;
+
+protected:
+    void timerEvent(QTimerEvent *event);
 };
 #endif // MAINWINDOW_H
