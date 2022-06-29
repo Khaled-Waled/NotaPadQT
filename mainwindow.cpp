@@ -8,8 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //make the text editor take full screen
-    this->setCentralWidget(ui->textEdit);
+    //this->setCentralWidget(ui->textEdit); //make the textEdit take full screen (not the intended behaviour)
     this->wordProcessor = WordProcessor();
     this->wordProcessor.setWorkingElement(ui->textEdit);
     timerId = startTimer(1000);

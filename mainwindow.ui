@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>10</y>
+      <y>20</y>
       <width>761</width>
-      <height>551</height>
+      <height>531</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -68,51 +68,86 @@
    <addaction name="menufont"/>
   </widget>
   <action name="actionNew">
+   <property name="icon">
+    <iconset theme="document-new"/>
+   </property>
    <property name="text">
     <string>New</string>
    </property>
   </action>
   <action name="actionOpen">
+   <property name="icon">
+    <iconset theme="document-open"/>
+   </property>
    <property name="text">
     <string>Open</string>
    </property>
   </action>
   <action name="actionSave">
+   <property name="icon">
+    <iconset theme="document-save"/>
+   </property>
    <property name="text">
     <string>Save</string>
    </property>
   </action>
   <action name="actionRedFont">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/images/Icons/red.jpg</normaloff>:/images/Icons/red.jpg</iconset>
+   </property>
    <property name="text">
     <string>Red</string>
    </property>
   </action>
   <action name="actionWhiteFont">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/images/Icons/white.jpg</normaloff>:/images/Icons/white.jpg</iconset>
+   </property>
    <property name="text">
     <string>White</string>
    </property>
   </action>
   <action name="actionBlackFont">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/images/Icons/black.jpg</normaloff>:/images/Icons/black.jpg</iconset>
+   </property>
    <property name="text">
     <string>Black</string>
    </property>
   </action>
   <action name="actionYellowFont">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/images/Icons/yellow.jpg</normaloff>:/images/Icons/yellow.jpg</iconset>
+   </property>
    <property name="text">
     <string>Yellow</string>
    </property>
   </action>
   <action name="actionGreenFont">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/images/Icons/green.jpg</normaloff>:/images/Icons/green.jpg</iconset>
+   </property>
    <property name="text">
     <string>Green</string>
    </property>
   </action>
   <action name="actionBlueFont">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/images/Icons/blue.jpg</normaloff>:/images/Icons/blue.jpg</iconset>
+   </property>
    <property name="text">
     <string>Blue</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

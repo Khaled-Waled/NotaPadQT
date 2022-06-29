@@ -20,6 +20,7 @@ set(PROJECT_SOURCES
         mainwindow.h
         mainwindow.ui
         wordprocessor.h wordprocessor.cpp
+        Resources.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
