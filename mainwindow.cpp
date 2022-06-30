@@ -115,3 +115,27 @@ void MainWindow::timerEvent(QTimerEvent *event)
     wordProcessor.colorFormatText();
 }
 
+
+void MainWindow::on_comboBox_activated(int index)
+{
+    QString color ="";
+    switch(index)
+    {
+    case 0:
+        color = "red";
+        break;
+
+    case 1:
+        color = "white";
+        break;
+
+    case 2:
+        color = "black";
+        break;
+
+    default:
+        color = "blue";
+    }
+    ui->textEdit->setTextColor(QColor(color));
+}
+

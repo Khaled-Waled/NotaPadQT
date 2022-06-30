@@ -40,6 +40,8 @@ private slots:
 
     void on_actionBlueFont_triggered();
 
+    void on_comboBox_activated(int index);
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
