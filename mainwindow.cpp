@@ -139,3 +139,10 @@ void MainWindow::on_comboBox_activated(int index)
     ui->textEdit->setTextColor(QColor(color));
 }
 
+
+void MainWindow::on_fontComboBox_currentFontChanged(const QFont &font)
+{
+    QTextEdit* textEdit = ui->textEdit;
+    textEdit->setFontFamily(font.family());
+}
+
