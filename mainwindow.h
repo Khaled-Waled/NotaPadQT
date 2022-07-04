@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include<QMainWindow>
 
 #include<QFile>
 #include<QFileDialog>
@@ -43,6 +43,8 @@ private slots:
     void on_comboBox_activated(int index);
 
     void on_fontComboBox_currentFontChanged(const QFont &f);
+
+    void on_comboBox_Font_Size_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;

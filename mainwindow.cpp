@@ -49,7 +49,6 @@ void MainWindow::on_actionOpen_triggered()
     file.close();
 }
 
-
 void MainWindow::on_actionSave_triggered()
 {
     QString fileName = QFileDialog::getSaveFileName(this, "Select Location");
@@ -76,13 +75,11 @@ void MainWindow::on_actionRedFont_triggered()
     textEdit->setTextColor(QColor("red"));
 }
 
-
 void MainWindow::on_actionWhiteFont_triggered()
 {
     QTextEdit* textEdit = ui->textEdit;
     textEdit->setTextColor(QColor("white"));
 }
-
 
 void MainWindow::on_actionBlackFont_triggered()
 {
@@ -90,13 +87,11 @@ void MainWindow::on_actionBlackFont_triggered()
     textEdit->setTextColor(QColor("black"));
 }
 
-
 void MainWindow::on_actionYellowFont_triggered()
 {
     QTextEdit* textEdit = ui->textEdit;
     textEdit->setTextColor(QColor("yellow"));
 }
-
 
 void MainWindow::on_actionGreenFont_triggered()
 {
@@ -118,24 +113,7 @@ void MainWindow::timerEvent(QTimerEvent *event)
 
 void MainWindow::on_comboBox_activated(int index)
 {
-    QString color ="";
-    switch(index)
-    {
-    case 0:
-        color = "red";
-        break;
-
-    case 1:
-        color = "white";
-        break;
-
-    case 2:
-        color = "black";
-        break;
-
-    default:
-        color = "blue";
-    }
+    QString color = ui->comboBox->currentText();
     ui->textEdit->setTextColor(QColor(color));
 }
 
@@ -144,5 +122,13 @@ void MainWindow::on_fontComboBox_currentFontChanged(const QFont &font)
 {
     QTextEdit* textEdit = ui->textEdit;
     textEdit->setFontFamily(font.family());
+}
+
+
+void MainWindow::on_comboBox_Font_Size_currentIndexChanged(int index)
+{
+    QString text = ui->comboBox_Font_Size->currentText();
+    int fontSize = stoi(text.toStdString());
+    ui->textEdit->setFontPointSize(fontSize);
 }
 
