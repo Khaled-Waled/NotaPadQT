@@ -16,10 +16,12 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        mainwindow.cpp
+        src/mainwindow.cpp
         mainwindow.h
-        mainwindow.ui
-        wordprocessor.h wordprocessor.cpp
+        src/mainwindow.ui
+        wordprocessor.h src/wordprocessor.cpp
+        settingwindow.h src/settingwindow.cpp src/settingwindow.ui
+        configuration.h
         Resources.qrc
 )
 
