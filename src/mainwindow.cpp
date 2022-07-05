@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include <fstream>
 
 #include <QTimer>
 
@@ -134,7 +135,35 @@ void MainWindow::on_comboBox_Font_Size_currentIndexChanged(int index)
 
 void MainWindow::loadSpecialWords(std::string directory)
 {
-    //TODO: loadSpecialWords
+    std::ifstream file(directory);
+    std::string line;
+
+    char delimiter = '$';
+    std::string buffer = "";
+
+    int num = 0;
+    const int maxNum = WordProcessor::NUMBER_OF_COLOR_LISTS;
+    while (num < maxNum && file >> line)
+    {
+        for(auto c : line)
+        {
+            if(c!=delimiter)
+                buffer+=c;
+            else
+            {
+                wordProcessor.addWordToList(buffer, num);
+                buffer="";
+            }
+        }
+        if (buffer != "" && buffer != " "|| buffer!=std::string(1,delimiter))
+        {
+            wordProcessor.addWordToList(buffer, num);
+            buffer="";
+        }
+        num++;
+    }
+
+
 }
 
 void MainWindow::applyConfiguration(Configuraion config)

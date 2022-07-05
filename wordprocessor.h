@@ -17,10 +17,12 @@ private:
     QTextEdit* workingElement;
 
 public:
+    const static int NUMBER_OF_COLOR_LISTS = 4;
     WordProcessor();
     void setWorkingElement(QTextEdit*);
     void colorFormatText();
     void colorSection(int,int,QString);
+    void addWordToList(std::string, int);
 };
 
 #endif // WORDPROCESSOR_H

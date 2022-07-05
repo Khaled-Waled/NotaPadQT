@@ -4,18 +4,7 @@
 
 WordProcessor::WordProcessor()
 {
-    //TODO get from file
 
-    //fill blue list
-    blueList.push_back("int");
-    blueList.push_back("double");
-    blueList.push_back("float");
-
-    //fill red list
-    redList.push_back("return");
-
-    //fill green list
-    greenList.push_back("green");
 }
 void WordProcessor::setWorkingElement(QTextEdit* textEdit)
 {
@@ -63,7 +52,6 @@ void WordProcessor::colorFormatText()
     }
 }
 
-
 void WordProcessor::colorSection(int begin, int end, QString color)
 {
     QTextCharFormat fmt;
@@ -73,4 +61,30 @@ void WordProcessor::colorSection(int begin, int end, QString color)
     cursor.setPosition(begin, QTextCursor::MoveAnchor);
     cursor.setPosition(end, QTextCursor::KeepAnchor);
     cursor.setCharFormat(fmt);
+}
+
+void WordProcessor::addWordToList(std::string word, int listIndex)
+{
+    if(listIndex==0)
+        blueList.push_back(word);
+    else if(listIndex==1)
+        redList.push_back(word);
+    else if(listIndex==2)
+        orangeList.push_back(word);
+    else if(listIndex==3)
+        greenList.push_back(word);
+}
+
+void WordProcessor::testFillColorLists()
+{
+    //fill blue list
+    blueList.push_back("int");
+    blueList.push_back("double");
+    blueList.push_back("float");
+
+    //fill red list
+    redList.push_back("return");
+
+    //fill green list
+    greenList.push_back("green");
 }
