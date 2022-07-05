@@ -23,6 +23,7 @@ public:
     void colorFormatText();
     void colorSection(int,int,QString);
     void addWordToList(std::string, int);
+    void testFillColorLists();
 };
 
 #endif // WORDPROCESSOR_H
