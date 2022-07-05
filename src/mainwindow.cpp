@@ -132,3 +132,26 @@ void MainWindow::on_comboBox_Font_Size_currentIndexChanged(int index)
     ui->textEdit->setFontPointSize(fontSize);
 }
 
+void MainWindow::loadSpecialWords(std::string directory)
+{
+    //TODO: loadSpecialWords
+}
+
+void MainWindow::applyConfiguration(Configuraion config)
+{
+    QTextEdit* textEdit = ui->textEdit;
+    textEdit->setTextColor(config.default_font_color);
+    ui->textEdit->setFontPointSize(config.default_font_size);
+
+    //TODO: startup_behaviour
+    switch(config.startup_behaviour)
+    {
+    case 0:
+        break;
+    default:
+        break;
+    }
+
+    loadSpecialWords(config.special_words_directory);
+}
+

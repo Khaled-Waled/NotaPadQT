@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include<QMainWindow>
+#include<configuration.h>
 
 #include<QFile>
 #include<QFileDialog>
@@ -20,6 +21,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
 
 private slots:
     void on_actionNew_triggered();
@@ -51,6 +53,8 @@ private:
     QString currentFile = "";
     WordProcessor wordProcessor;
     int timerId;
+    void applyConfiguration(Configuraion);
+    void loadSpecialWords(std::string);
 
 protected:
     void timerEvent(QTimerEvent *event);
