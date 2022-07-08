@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <fstream>
-
 #include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -32,42 +31,27 @@ void MainWindow::on_actionNew_triggered()
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, "Select the File");
-    QFile file(fileName);
-    //Try to open file in read only state and get text
-    if(!file.open(QIODevice::ReadOnly | QFile::Text))
+    currentFile = QFileDialog::getOpenFileName(this, "Select the File");
+    QString text = FileManager::getFileContent(currentFile);
+    if(text=="")
     {
-        //if failed
-        QMessageBox::warning(this, "Open Failed", "Can't open "+ fileName+"\n"+file.errorString());
-        return;
+        QMessageBox::warning(this, "No content" ,"Empty File, an error may have occured");
     }
-
-    currentFile = fileName;
-    QTextStream inStream(&file);       //get text stream
-    QString text = inStream.readAll(); //stream to string
-    ui->textEdit->setText(text);       //pass file content to screen
-    setWindowTitle(fileName);
-    file.close();
+    ui->textEdit->setText(text);
+    setWindowTitle(currentFile);
 }
 
 void MainWindow::on_actionSave_triggered()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, "Select Location");
-    QFile file(fileName);
-    //Try to write file
-    if(!file.open(QIODevice::WriteOnly | QFile::Text))
+    QString fileDir = QFileDialog::getSaveFileName(this, "Select Location");
+    QString content = ui->textEdit->toPlainText();  //get content from screen
+    if(!FileManager::writeToFile(currentFile, content))
     {
-        //if failed
-        QMessageBox::warning(this, "Save Failed", "Can't access "+ fileName+"\n"+file.errorString());
+        QMessageBox::warning(this, "Save Failed", "Can't access "+ fileDir);
         return;
     }
-
-    currentFile = fileName;
-    QTextStream outStream(&file);                //set text stream
-    QString text = ui->textEdit->toPlainText();  //get content from screen
-    outStream<<text;                             //write to file
-    setWindowTitle(fileName);
-    file.close();
+    currentFile = fileDir;
+    setWindowTitle(currentFile);
 }
 
 void MainWindow::on_actionRedFont_triggered()
@@ -162,8 +146,6 @@ void MainWindow::loadSpecialWords(std::string directory)
         }
         num++;
     }
-
-
 }
 
 void MainWindow::applyConfiguration(Configuraion config)

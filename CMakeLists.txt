@@ -22,6 +22,7 @@ set(PROJECT_SOURCES
         wordprocessor.h src/wordprocessor.cpp
         settingwindow.h src/settingwindow.cpp src/settingwindow.ui
         configuration.h
+        filemanager.h src/filemanager.cpp
         Resources.qrc
 )
 
