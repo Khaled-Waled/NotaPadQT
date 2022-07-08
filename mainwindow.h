@@ -56,6 +56,7 @@ private:
     int timerId;
     void applyConfiguration(Configuraion);
     void loadSpecialWords(std::string);
+    void openFile(QString);
 
 protected:
     void timerEvent(QTimerEvent *event);

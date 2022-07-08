@@ -28,10 +28,9 @@ void MainWindow::on_actionNew_triggered()
     setWindowTitle("NotaPadQT");
 }
 
-
-void MainWindow::on_actionOpen_triggered()
+void MainWindow::openFile(QString directory)
 {
-    currentFile = QFileDialog::getOpenFileName(this, "Select the File");
+    currentFile = directory;
     QString text = FileManager::getFileContent(currentFile);
     if(text=="")
     {
@@ -39,6 +38,13 @@ void MainWindow::on_actionOpen_triggered()
     }
     ui->textEdit->setText(text);
     setWindowTitle(currentFile);
+}
+
+
+void MainWindow::on_actionOpen_triggered()
+{
+    QString directory = QFileDialog::getOpenFileName(this, "Select the File");
+    openFile(directory);
 }
 
 void MainWindow::on_actionSave_triggered()
@@ -154,13 +160,23 @@ void MainWindow::applyConfiguration(Configuraion config)
     textEdit->setTextColor(config.default_font_color);
     ui->textEdit->setFontPointSize(config.default_font_size);
 
-    //TODO: startup_behaviour
+    //set up startup_behaviour
+    QString directory;
     switch(config.startup_behaviour)
     {
-    case 0:
+    case 0://open new file
+        textEdit->setText("");
+        break;
+    case 1://open Last File
+        directory = QString::fromStdString(config.last_Opened_File);
+        openFile(directory);
+        break;
+    case 2://show select file screen
+        directory = QFileDialog::getOpenFileName(this, "Select the File");
+        openFile(directory);
         break;
     default:
-        break;
+        textEdit->setText("");
     }
 
     loadSpecialWords(config.special_words_directory);
