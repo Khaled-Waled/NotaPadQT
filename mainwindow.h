@@ -8,6 +8,8 @@
 #include<QFileDialog>
 #include<QTextStream>
 #include<QMessageBox>
+#include <fstream>
+#include <QTimer>
 
 #include<wordprocessor.h>
 #include<filemanager.h>

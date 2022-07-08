@@ -4,7 +4,6 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-#endif // CONFIGURATION_H
 
 struct Configuraion
 {
@@ -34,4 +33,19 @@ struct Configuraion
         special_words_directory = swd;
         last_Opened_File   = lop;
     }
+
+    static Configuraion loadConfiguraion(QString directory)
+    {
+        //TODO: load configuration form file
+        return Configuraion();
+    }
+
+    static bool saveConfig(QString directory)
+    {
+        //TODO: Save configuration to file
+        return false;
+    }
 };
+
+#endif // CONFIGURATION_H
+

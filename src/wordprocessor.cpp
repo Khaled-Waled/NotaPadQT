@@ -1,7 +1,4 @@
 #include "wordprocessor.h"
-#include <iostream>
-
-
 WordProcessor::WordProcessor()
 {
 
