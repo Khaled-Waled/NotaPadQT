@@ -1,9 +1,11 @@
-#include <QString>
-#include <string>
-
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
+#include <QString>
+#include <string>
+#include <vector>
+#include <filemanager.h>
+#include <wordprocessor.h>
 
 struct Configuraion
 {
@@ -11,22 +13,25 @@ struct Configuraion
     QString default_font_color;
     int default_font_size;
     int startup_behaviour;
-    std::string special_words_directory;
-    std::string last_Opened_File;
+    QString special_words_directory;
+    QString last_Opened_File;
 
 
     //default constructor
     Configuraion()
     {
+        number_of_items = 5;
         default_font_color = "";
         default_font_size  = 14;
         startup_behaviour  = 0;
         special_words_directory = "";
+        last_Opened_File   = "";
     }
 
     //parametrized constructor
-    Configuraion(QString dfc, int dfs,  int strt, std::string swd, std::string lop)
+    Configuraion(QString dfc, int dfs,  int strt, QString swd, QString lop)
     {
+        number_of_items = 5;
         default_font_color = dfc;
         default_font_size  = dfs;
         startup_behaviour  = strt;
@@ -36,14 +41,36 @@ struct Configuraion
 
     static Configuraion loadConfiguraion(QString directory)
     {
-        //TODO: load configuration form file
-        return Configuraion();
+        QString content = FileManager::getFileContent(directory);
+        std::vector<QString> lines = WordProcessor::split(content, '\n');
+
+        try     //Could use better error handling
+        {
+            QString dfc = lines[0];
+            int dfs = stoi(lines[1].toStdString());
+            int strt = stoi(lines[2].toStdString());
+            QString swd = lines[3];
+            QString lop = lines[4];
+
+            return Configuraion(dfc,dfs,strt,swd,lop);
+        }
+        catch(...)
+        {
+            return Configuraion();
+        }
     }
 
-    static bool saveConfig(QString directory)
+    static bool saveConfig(QString directory, Configuraion config)
     {
-        //TODO: Save configuration to file
-        return false;
+        QString content="";
+
+        content += config.default_font_color;       content+='\n';
+        content += config.default_font_size;        content+='\n';
+        content += config.startup_behaviour;        content+='\n';
+        content += config.special_words_directory;  content+='\n';
+        content += config.last_Opened_File;
+
+        return FileManager::writeToFile(directory, content);
     }
 };
 

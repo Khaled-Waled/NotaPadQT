@@ -57,7 +57,7 @@ private:
     WordProcessor wordProcessor;
     int timerId;
     void applyConfiguration(Configuraion);
-    void loadSpecialWords(std::string);
+    void loadSpecialWords(QString);
     void openFile(QString);
 
 protected:

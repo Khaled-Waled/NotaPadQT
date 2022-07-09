@@ -1,4 +1,5 @@
 #include "wordprocessor.h"
+#include <sstream>
 WordProcessor::WordProcessor()
 {
 
@@ -84,4 +85,17 @@ void WordProcessor::testFillColorLists()
 
     //fill green list
     greenList.push_back("green");
+}
+
+std::vector<QString> WordProcessor::split(QString content, char delimeter)
+{
+    std::stringstream sstream(content.toStdString());
+    std::string segment;
+    std::vector<QString> seglist;
+
+    while(!std::getline(sstream, segment, delimeter).eof())
+    {
+       seglist.push_back(QString::fromStdString(segment));
+    }
+    return seglist;
 }

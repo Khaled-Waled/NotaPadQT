@@ -3,6 +3,7 @@
 
 #include <QTextEdit>
 #include <string>
+#include <sstream>
 #include <vector>
 
 
@@ -24,6 +25,7 @@ public:
     void colorSection(int,int,QString);
     void addWordToList(std::string, int);
     void testFillColorLists();
+    static std::vector<QString> split(QString, char);
 };
 
 #endif // WORDPROCESSOR_H

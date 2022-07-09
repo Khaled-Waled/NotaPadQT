@@ -10,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
     this->wordProcessor = WordProcessor();
     this->wordProcessor.setWorkingElement(ui->textEdit);
     timerId = startTimer(1000);
+
+    //TODO: Actually load configuration
+    applyConfiguration(Configuraion()); //just for test
 }
 
 MainWindow::~MainWindow()
@@ -122,11 +125,11 @@ void MainWindow::on_comboBox_Font_Size_currentIndexChanged(int index)
     ui->textEdit->setFontPointSize(fontSize);
 }
 
-void MainWindow::loadSpecialWords(std::string directory)
+void MainWindow::loadSpecialWords(QString directory)
 {
     if(directory == "") return;
 
-    std::ifstream file(directory);
+    std::ifstream file(directory.toStdString());
     std::string line;
 
     char delimiter = '$';
@@ -175,7 +178,7 @@ void MainWindow::applyConfiguration(Configuraion config)
         textEdit->setText("");
         break;
     case 1:         //open Last File
-        directory = QString::fromStdString(config.last_Opened_File);
+        directory = config.last_Opened_File;
         openFile(directory);
         break;
     case 2:         //show select file screen
