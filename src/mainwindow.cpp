@@ -28,6 +28,7 @@ void MainWindow::on_actionNew_triggered()
 
 void MainWindow::openFile(QString directory)
 {
+    if(directory=="") return;
     currentFile = directory;
     QString text = FileManager::getFileContent(currentFile);
     if(text=="")
@@ -123,6 +124,8 @@ void MainWindow::on_comboBox_Font_Size_currentIndexChanged(int index)
 
 void MainWindow::loadSpecialWords(std::string directory)
 {
+    if(directory == "") return;
+
     std::ifstream file(directory);
     std::string line;
 
@@ -154,22 +157,28 @@ void MainWindow::loadSpecialWords(std::string directory)
 
 void MainWindow::applyConfiguration(Configuraion config)
 {
+    //Set up the pointer
     QTextEdit* textEdit = ui->textEdit;
-    textEdit->setTextColor(config.default_font_color);
+
+    //Font Color
+    if(config.default_font_color!="")
+        textEdit->setTextColor(config.default_font_color);
+
+    //Font Size
     ui->textEdit->setFontPointSize(config.default_font_size);
 
     //set up startup_behaviour
     QString directory;
     switch(config.startup_behaviour)
     {
-    case 0://open new file
+    case 0:         //open new file
         textEdit->setText("");
         break;
-    case 1://open Last File
+    case 1:         //open Last File
         directory = QString::fromStdString(config.last_Opened_File);
         openFile(directory);
         break;
-    case 2://show select file screen
+    case 2:         //show select file screen
         directory = QFileDialog::getOpenFileName(this, "Select the File");
         openFile(directory);
         break;
@@ -177,6 +186,8 @@ void MainWindow::applyConfiguration(Configuraion config)
         textEdit->setText("");
     }
 
-    loadSpecialWords(config.special_words_directory);
+    //Special Words
+    if(config.special_words_directory!="")
+        loadSpecialWords(config.special_words_directory);
 }
 
