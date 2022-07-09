@@ -2,4 +2,4 @@
 A small notepad-like Desktop application.
 
 # Screenshots
-![Screenshot 1](/Images/Screenshot1.png)
+![Screenshot 2](/Screenshots/Screenshot2.png)
