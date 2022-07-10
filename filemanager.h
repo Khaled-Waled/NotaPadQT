@@ -13,6 +13,7 @@ public:
     FileManager();
     static QString getFileContent(QString);
     static bool writeToFile(QString,QString);
+    static QString get_homedir();
 };
 
 #endif // FILEMANAGER_H

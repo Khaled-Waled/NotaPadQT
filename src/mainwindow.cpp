@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,8 +12,9 @@ MainWindow::MainWindow(QWidget *parent)
     this->wordProcessor.setWorkingElement(ui->textEdit);
     timerId = startTimer(1000);
 
-    //TODO: Actually load configuration
-    applyConfiguration(Configuraion()); //just for test
+    QString homeDir = FileManager::get_homedir();
+    Configuraion loaded = Configuraion::loadConfiguraion(homeDir + "/npqt.cnfg");
+    applyConfiguration(loaded); //just for test
 }
 
 MainWindow::~MainWindow()

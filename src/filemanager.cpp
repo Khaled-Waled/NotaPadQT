@@ -33,3 +33,14 @@ bool FileManager::writeToFile(QString directory, QString content)
     file.close();
     return true;
 }
+
+QString FileManager::get_homedir()
+{
+    char homedir[100];
+    #ifdef _WIN32
+        snprintf(homedir, MAX_PATH, "%s%s", getenv("HOMEDRIVE"), getenv("HOMEPATH"));
+    #else
+        snprintf(homedir, 100, "%s", getenv("HOME"));
+    #endif
+    return QString::fromStdString(homedir);
+}

@@ -39,6 +39,19 @@ struct Configuraion
         last_Opened_File   = lop;
     }
 
+    //Directory constructor
+    Configuraion(QString directory)
+    {
+        Configuraion temp  = loadConfiguraion(directory);
+
+        this->number_of_items = temp.number_of_items;
+        this->default_font_color = temp.default_font_color;
+        this->default_font_size  = temp.default_font_size;
+        this->startup_behaviour  = temp.startup_behaviour;
+        this->special_words_directory = temp.special_words_directory;
+        this->last_Opened_File   = temp.last_Opened_File;
+    }
+
     static Configuraion loadConfiguraion(QString directory)
     {
         QString content = FileManager::getFileContent(directory);
@@ -64,11 +77,11 @@ struct Configuraion
     {
         QString content="";
 
-        content += config.default_font_color;       content+='\n';
-        content += config.default_font_size;        content+='\n';
-        content += config.startup_behaviour;        content+='\n';
-        content += config.special_words_directory;  content+='\n';
-        content += config.last_Opened_File;
+        content += config.default_font_color;                                               content+='\n';
+        content += QString::fromStdString(std::to_string(config.default_font_size));        content+='\n';
+        content += QString::fromStdString(std::to_string(config.startup_behaviour));        content+='\n';
+        content += config.special_words_directory;                                          content+='\n';
+        content += config.last_Opened_File;                                                 content+='\n';
 
         return FileManager::writeToFile(directory, content);
     }
