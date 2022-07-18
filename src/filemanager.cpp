@@ -44,3 +44,18 @@ QString FileManager::get_homedir()
     #endif
     return QString::fromStdString(homedir);
 }
+
+
+QString FileManager::get_config_path()
+{
+    QString homeDir = FileManager::get_homedir();
+    QString filePath = "";
+
+#ifdef _WIN32
+    filePath = homeDir + "\npqt.cnfg";   //Windows
+#else
+    filePath = homeDir + "/npqt.cnfg";   //Other OS
+#endif
+
+    return filePath;
+}

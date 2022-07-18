@@ -14,6 +14,7 @@ public:
     static QString getFileContent(QString);
     static bool writeToFile(QString,QString);
     static QString get_homedir();
+    static QString get_config_path();
 };
 
 #endif // FILEMANAGER_H

@@ -11,9 +11,10 @@ MainWindow::MainWindow(QWidget *parent)
     this->wordProcessor.setWorkingElement(ui->textEdit);
     timerId = startTimer(1000);
 
-    QString homeDir = FileManager::get_homedir();
-    Configuraion loaded = Configuraion::loadConfiguraion(homeDir + "/npqt.cnfg");
-    applyConfiguration(loaded); //just for test
+    //Fetch and apply configuration
+    QString configPath = FileManager::get_config_path();
+    Configuraion loaded = Configuraion::loadConfiguraion(configPath);
+    applyConfiguration(loaded);
 }
 
 MainWindow::~MainWindow()
@@ -32,7 +33,7 @@ void MainWindow::on_actionNew_triggered()
 
 void MainWindow::openFile(QString directory)
 {
-    if(directory=="") return;
+    if(directory=="" || directory[0]=='-') return;
     currentFile = directory;
     QString text = FileManager::getFileContent(currentFile);
     if(text=="")
@@ -128,7 +129,7 @@ void MainWindow::on_comboBox_Font_Size_currentIndexChanged(int index)
 
 void MainWindow::loadSpecialWords(QString directory)
 {
-    if(directory == "") return;
+    if(directory == "" || directory[0]=='-') return;
 
     std::ifstream file(directory.toStdString());
     std::string line;
@@ -165,7 +166,7 @@ void MainWindow::applyConfiguration(Configuraion config)
     QTextEdit* textEdit = ui->textEdit;
 
     //Font Color
-    if(config.default_font_color!="")
+    if(config.default_font_color[0]!='-')
         textEdit->setTextColor(config.default_font_color);
 
     //Font Size
@@ -191,7 +192,7 @@ void MainWindow::applyConfiguration(Configuraion config)
     }
 
     //Special Words
-    if(config.special_words_directory!="")
+    if(config.special_words_directory[0]!='-')
         loadSpecialWords(config.special_words_directory);
 }
 

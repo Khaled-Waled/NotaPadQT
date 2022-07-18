@@ -20,11 +20,11 @@ struct Configuraion
     //default constructor
     Configuraion()
     {
-        default_font_color = "";
+        default_font_color = "-";
         default_font_size  = 14;
         startup_behaviour  = 0;
-        special_words_directory = "";
-        last_Opened_File   = "";
+        special_words_directory = "-";
+        last_Opened_File   = "-";
     }
 
     //parametrized constructor
@@ -53,7 +53,13 @@ struct Configuraion
     {
         QString content = FileManager::getFileContent(directory);
         std::vector<QString> lines = WordProcessor::split(content, '\n');
-        if(lines.size()< NUMBER_OF_ITEMS) return Configuraion();
+
+        if(lines.size()< NUMBER_OF_ITEMS) //file is corrupted or not found
+        {
+            Configuraion defaultConfig = Configuraion();
+            saveConfig(directory,defaultConfig); //fix and rewrite file
+            return defaultConfig;
+        }
 
         try     //Could use better error handling
         {
