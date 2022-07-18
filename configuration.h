@@ -6,10 +6,10 @@
 #include <vector>
 #include <filemanager.h>
 #include <wordprocessor.h>
+#define NUMBER_OF_ITEMS 5
 
 struct Configuraion
 {
-    int number_of_items = 5;
     QString default_font_color;
     int default_font_size;
     int startup_behaviour;
@@ -20,7 +20,6 @@ struct Configuraion
     //default constructor
     Configuraion()
     {
-        number_of_items = 5;
         default_font_color = "";
         default_font_size  = 14;
         startup_behaviour  = 0;
@@ -31,7 +30,6 @@ struct Configuraion
     //parametrized constructor
     Configuraion(QString dfc, int dfs,  int strt, QString swd, QString lop)
     {
-        number_of_items = 5;
         default_font_color = dfc;
         default_font_size  = dfs;
         startup_behaviour  = strt;
@@ -44,7 +42,6 @@ struct Configuraion
     {
         Configuraion temp  = loadConfiguraion(directory);
 
-        this->number_of_items = temp.number_of_items;
         this->default_font_color = temp.default_font_color;
         this->default_font_size  = temp.default_font_size;
         this->startup_behaviour  = temp.startup_behaviour;
@@ -56,6 +53,7 @@ struct Configuraion
     {
         QString content = FileManager::getFileContent(directory);
         std::vector<QString> lines = WordProcessor::split(content, '\n');
+        if(lines.size()< NUMBER_OF_ITEMS) return Configuraion();
 
         try     //Could use better error handling
         {

@@ -95,7 +95,8 @@ std::vector<QString> WordProcessor::split(QString content, char delimeter)
 
     while(!std::getline(sstream, segment, delimeter).eof())
     {
-       seglist.push_back(QString::fromStdString(segment));
+       if(segment.length()!=0)
+           seglist.push_back(QString::fromStdString(segment));
     }
     return seglist;
 }
