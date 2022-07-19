@@ -68,6 +68,7 @@ private:
     void applyConfiguration(Configuraion);
     void loadSpecialWords(QString);
     void openFile(QString);
+    void setTextEditBgColor(QString);
 
 protected:
     void timerEvent(QTimerEvent *event);
