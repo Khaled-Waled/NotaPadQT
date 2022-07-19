@@ -2,6 +2,7 @@
 #define SETTINGWINDOW_H
 
 #include "configuration.h"
+#include "mainwindow.h"
 #include <QDialog>
 
 namespace Ui {
@@ -30,6 +31,7 @@ private slots:
 private:
     Ui::SettingWindow *ui;
     void gather_config_attributes();
+    void dump_config_attributes(Configuraion);
 
 };
 

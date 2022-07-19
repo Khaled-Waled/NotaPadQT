@@ -89,6 +89,12 @@ struct Configuraion
 
         return FileManager::writeToFile(directory, content);
     }
+    static bool saveConfig(Configuraion config)
+    {
+        QString directory = FileManager::get_config_path();
+        return saveConfig(directory, config);
+    }
+
 };
 
 #endif // CONFIGURATION_H
