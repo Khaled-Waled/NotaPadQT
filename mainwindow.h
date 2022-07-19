@@ -13,6 +13,8 @@
 
 #include<wordprocessor.h>
 #include<filemanager.h>
+#include<settingwindow.h>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -50,6 +52,8 @@ private slots:
     void on_fontComboBox_currentFontChanged(const QFont &f);
 
     void on_comboBox_Font_Size_currentIndexChanged(int index);
+
+    void on_actionSettings_triggered();
 
 private:
     Ui::MainWindow *ui;

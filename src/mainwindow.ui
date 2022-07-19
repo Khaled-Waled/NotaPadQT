@@ -55,7 +55,7 @@
       <string>Red</string>
      </property>
      <property name="icon">
-      <iconset resource="Resources.qrc">
+      <iconset resource="../Resources.qrc">
        <normaloff>:/images/Icons/red.jpg</normaloff>:/images/Icons/red.jpg</iconset>
      </property>
     </item>
@@ -64,7 +64,7 @@
       <string>White</string>
      </property>
      <property name="icon">
-      <iconset resource="Resources.qrc">
+      <iconset resource="../Resources.qrc">
        <normaloff>:/images/Icons/white.jpg</normaloff>:/images/Icons/white.jpg</iconset>
      </property>
     </item>
@@ -73,7 +73,7 @@
       <string>Black</string>
      </property>
      <property name="icon">
-      <iconset resource="Resources.qrc">
+      <iconset resource="../Resources.qrc">
        <normaloff>:/images/Icons/black.jpg</normaloff>:/images/Icons/black.jpg</iconset>
      </property>
     </item>
@@ -82,7 +82,7 @@
       <string>Yellow</string>
      </property>
      <property name="icon">
-      <iconset resource="Resources.qrc">
+      <iconset resource="../Resources.qrc">
        <normaloff>:/images/Icons/yellow.jpg</normaloff>:/images/Icons/yellow.jpg</iconset>
      </property>
     </item>
@@ -91,7 +91,7 @@
       <string>Green</string>
      </property>
      <property name="icon">
-      <iconset resource="Resources.qrc">
+      <iconset resource="../Resources.qrc">
        <normaloff>:/images/Icons/green.jpg</normaloff>:/images/Icons/green.jpg</iconset>
      </property>
     </item>
@@ -100,7 +100,7 @@
       <string>Blue</string>
      </property>
      <property name="icon">
-      <iconset resource="Resources.qrc">
+      <iconset resource="../Resources.qrc">
        <normaloff>:/images/Icons/blue.jpg</normaloff>:/images/Icons/blue.jpg</iconset>
      </property>
     </item>
@@ -231,6 +231,7 @@
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
+    <addaction name="actionSettings"/>
    </widget>
    <widget class="QMenu" name="menufont">
     <property name="title">
@@ -298,7 +299,7 @@
   </action>
   <action name="actionRedFont">
    <property name="icon">
-    <iconset resource="Resources.qrc">
+    <iconset resource="../Resources.qrc">
      <normaloff>:/images/Icons/red.jpg</normaloff>:/images/Icons/red.jpg</iconset>
    </property>
    <property name="text">
@@ -307,7 +308,7 @@
   </action>
   <action name="actionWhiteFont">
    <property name="icon">
-    <iconset resource="Resources.qrc">
+    <iconset resource="../Resources.qrc">
      <normaloff>:/images/Icons/white.jpg</normaloff>:/images/Icons/white.jpg</iconset>
    </property>
    <property name="text">
@@ -316,7 +317,7 @@
   </action>
   <action name="actionBlackFont">
    <property name="icon">
-    <iconset resource="Resources.qrc">
+    <iconset resource="../Resources.qrc">
      <normaloff>:/images/Icons/black.jpg</normaloff>:/images/Icons/black.jpg</iconset>
    </property>
    <property name="text">
@@ -325,7 +326,7 @@
   </action>
   <action name="actionYellowFont">
    <property name="icon">
-    <iconset resource="Resources.qrc">
+    <iconset resource="../Resources.qrc">
      <normaloff>:/images/Icons/yellow.jpg</normaloff>:/images/Icons/yellow.jpg</iconset>
    </property>
    <property name="text">
@@ -334,7 +335,7 @@
   </action>
   <action name="actionGreenFont">
    <property name="icon">
-    <iconset resource="Resources.qrc">
+    <iconset resource="../Resources.qrc">
      <normaloff>:/images/Icons/green.jpg</normaloff>:/images/Icons/green.jpg</iconset>
    </property>
    <property name="text">
@@ -343,16 +344,24 @@
   </action>
   <action name="actionBlueFont">
    <property name="icon">
-    <iconset resource="Resources.qrc">
+    <iconset resource="../Resources.qrc">
      <normaloff>:/images/Icons/blue.jpg</normaloff>:/images/Icons/blue.jpg</iconset>
    </property>
    <property name="text">
     <string>Blue</string>
    </property>
   </action>
+  <action name="actionSettings">
+   <property name="icon">
+    <iconset theme="dialog-information"/>
+   </property>
+   <property name="text">
+    <string>Settings...</string>
+   </property>
+  </action>
  </widget>
  <resources>
-  <include location="Resources.qrc"/>
+  <include location="../Resources.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -196,3 +196,11 @@ void MainWindow::applyConfiguration(Configuraion config)
         loadSpecialWords(config.special_words_directory);
 }
 
+
+void MainWindow::on_actionSettings_triggered()
+{
+    SettingWindow settingWindow;
+    settingWindow.setModal(true);
+    settingWindow.exec();
+}
+
