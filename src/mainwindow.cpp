@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include"settingwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -23,6 +24,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+Configuraion MainWindow::currentConfiguration = Configuraion();
+
+Configuraion MainWindow::getCurrentConfiguration()
+{
+    return currentConfiguration;
+}
 
 void MainWindow::on_actionNew_triggered()
 {
@@ -162,6 +169,9 @@ void MainWindow::loadSpecialWords(QString directory)
 
 void MainWindow::applyConfiguration(Configuraion config)
 {
+    //store configuration for later use
+    MainWindow::currentConfiguration = config;
+
     //Set up the pointer
     QTextEdit* textEdit = ui->textEdit;
 

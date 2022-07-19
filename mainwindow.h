@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include<QMainWindow>
-#include<configuration.h>
 
 #include<QFile>
 #include<QFileDialog>
@@ -11,13 +10,17 @@
 #include <fstream>
 #include <QTimer>
 
-#include<wordprocessor.h>
-#include<filemanager.h>
-#include<settingwindow.h>
+#include"configuration.h"
+#include"wordprocessor.h"
+#include"filemanager.h"
+
+
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui { class MainWindow; class SettingWindow; }
 QT_END_NAMESPACE
+
+
 
 class MainWindow : public QMainWindow
 {
@@ -26,6 +29,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    static Configuraion getCurrentConfiguration();
 
 
 private slots:
@@ -58,6 +62,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
+    static Configuraion currentConfiguration;
     WordProcessor wordProcessor;
     int timerId;
     void applyConfiguration(Configuraion);
