@@ -1,6 +1,6 @@
 #include "settingwindow.h"
 #include "ui_settingwindow.h"
-
+#include <iostream>
 
 SettingWindow::SettingWindow(QWidget *parent) :
     QDialog(parent),
@@ -86,9 +86,10 @@ void SettingWindow::dump_config_attributes(Configuraion configuration)
     }
     else
     {
+        std::cout<<"Executing this option" << "\n";
         ui->checkBox_highlight->setChecked(false);
-        ui->lineEdit_specia_words_dir->setDisabled(false);
-        ui->pushButton_select_sw_dir->setDisabled(false);
+        ui->lineEdit_specia_words_dir->setDisabled(true);
+        ui->pushButton_select_sw_dir->setDisabled(true);
     }
 
 }
