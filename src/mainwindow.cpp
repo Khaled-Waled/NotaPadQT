@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->wordProcessor.setWorkingElement(ui->textEdit);
     timerId = startTimer(1000);
 
+    //setTextEditBgColor("green");    //for testing
     //Fetch and apply configuration
     QString configPath = FileManager::get_config_path();
     Configuraion loaded = Configuraion::loadConfiguraion(configPath);
@@ -213,4 +214,11 @@ void MainWindow::on_actionSettings_triggered()
     settingWindow.setModal(true);
     settingWindow.exec();
 }
+
+
+void MainWindow::setTextEditBgColor(QString color)
+{
+    ui->textEdit->setStyleSheet("background-color: "+ color + ";");
+}
+
 
