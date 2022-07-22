@@ -29,7 +29,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    static Configuraion getCurrentConfiguration();
+    static Configuraion& getCurrentConfiguration();
 
 
 private slots:
@@ -69,7 +69,7 @@ private:
     void loadSpecialWords(QString);
     void openFile(QString);
     void setTextEditBgColor(QString);
-
+    void setTextEditBgImage(QString);
 protected:
     void timerEvent(QTimerEvent *event);
 };

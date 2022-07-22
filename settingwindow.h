@@ -2,7 +2,10 @@
 #define SETTINGWINDOW_H
 
 #include "configuration.h"
+#include "filemanager.h"
 #include "mainwindow.h"
+#include "loadbackgrounddialog.h"
+//#include "cstdlib"
 #include <QDialog>
 
 namespace Ui {
@@ -28,11 +31,15 @@ private slots:
 
     void on_resetButton_clicked();
 
+    void on_pushButton_textEditBackground_clicked();
+
+    void on_checkBox_textEditBackground_stateChanged();
+
 private:
     Ui::SettingWindow *ui;
     void gather_config_attributes();
     void dump_config_attributes(Configuraion);
-
 };
 
 #endif // SETTINGWINDOW_H
+

@@ -24,6 +24,7 @@ set(PROJECT_SOURCES
         configuration.h
         filemanager.h src/filemanager.cpp
         Resources.qrc
+        loadbackgrounddialog.h src/loadbackgrounddialog.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
