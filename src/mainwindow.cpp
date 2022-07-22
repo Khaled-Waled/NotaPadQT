@@ -27,7 +27,7 @@ MainWindow::~MainWindow()
 
 Configuraion MainWindow::currentConfiguration = Configuraion();
 
-Configuraion MainWindow::getCurrentConfiguration()
+Configuraion& MainWindow::getCurrentConfiguration()
 {
     return currentConfiguration;
 }
@@ -202,9 +202,15 @@ void MainWindow::applyConfiguration(Configuraion config)
         textEdit->setText("");
     }
 
-    //Special Words
+    //Did user set special_words_dir?
     if(config.special_words_directory[0]!='-')
         loadSpecialWords(config.special_words_directory);
+
+    //Sets white background if user didnt specified directory
+    //or left checkbox unchecked.
+    setTextEditBgImage(getCurrentConfiguration().background_directory);
+    
+
 }
 
 
@@ -213,12 +219,22 @@ void MainWindow::on_actionSettings_triggered()
     SettingWindow settingWindow;
     settingWindow.setModal(true);
     settingWindow.exec();
+    applyConfiguration(currentConfiguration);
 }
-
 
 void MainWindow::setTextEditBgColor(QString color)
 {
     ui->textEdit->setStyleSheet("background-color: "+ color + ";");
 }
 
-
+void MainWindow::setTextEditBgImage(QString path)
+{
+    if(path[0] != '-')
+    {
+        ui->textEdit->setStyleSheet("background-image:url(" + path + ");");
+    }
+    else
+    {
+        setTextEditBgColor(QString("white"));
+    }
+}

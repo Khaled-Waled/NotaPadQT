@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>596</width>
-    <height>358</height>
+    <height>430</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>410</x>
-     <y>310</y>
+     <y>390</y>
      <width>80</width>
      <height>25</height>
     </rect>
@@ -30,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>500</x>
-     <y>310</y>
+     <y>390</y>
      <width>80</width>
      <height>25</height>
     </rect>
@@ -229,7 +229,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>310</y>
+     <y>390</y>
      <width>111</width>
      <height>25</height>
     </rect>
@@ -267,6 +267,61 @@
    </property>
    <property name="text">
     <string>Auto highlight special words</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_textEditBackground">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>290</y>
+     <width>391</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Custom text editor background</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_textEditBackground">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>330</y>
+     <width>201</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_textEditBackground">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>330</y>
+     <width>21</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>...</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lable_textEditBackground">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>330</y>
+     <width>141</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Background source file</string>
    </property>
   </widget>
  </widget>
